@@ -38,3 +38,22 @@
     text-align: center;
     letter-spacing: .2em;
 }
+
+@media (min-width: 700px) and (max-width: 1000px) {
+    .App {
+        width: 40%;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 700px) {
+    .App {
+        width: 60%;
+    }
+}
+
+@media (max-width: 500px) {
+    .App {
+        width: 80%;
+    }
+}
+
