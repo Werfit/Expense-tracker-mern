@@ -1,0 +1,34 @@
+.transactionBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.transactionBlock label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .1em;
+}
+
+.transactionBlock input {
+    padding: .7em .5em;
+    font-size: 14px;
+
+    outline: none;
+    margin: .6em 0px .8em 0px;
+    color: #333;
+    font-family: 'Lato';
+
+    border: 1px solid rgb(170, 170, 170);
+}
+
+.transactionBlock button {
+    padding: 1em;
+    background: rgb(155, 79, 226);
+
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    border: 0px;
+
+    cursor: pointer;
+}

@@ -1,0 +1,10 @@
+.expensesList {
+    max-height: 30vh;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.expensesList h4 {
+    color: #777;
+    margin: 0px;
+}

@@ -1,0 +1,69 @@
+.expenseBlock {
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    margin: 1em 0px;
+    transition: .4s ease;
+}
+
+.removeItem {
+    position: absolute;
+    height: 100%;
+    min-width: 10%;
+
+    left: 100%;
+    top: 0px;
+
+    background: rgb(230, 89, 89);
+    padding: .5em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: .4s ease;
+    z-index: 9999;
+}
+
+.removeItem:hover {
+    background: rgb(240, 89, 89);
+}
+
+.removeItem img {
+    width: 100%;
+}
+
+.expenseItem__block {
+    width: 100%;
+    background: #fff;
+    box-shadow: 0px 3px 3px rgba(200, 200, 200, .25);
+    padding: 1em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transition: .4s ease;
+}
+
+.expenseItem__block::after {
+    position: absolute;
+    content: '';
+
+    width: 6px;
+    height: 100%;
+
+    top: 0px;
+    left: 100%;
+    transform: translateX(-100%);
+}
+
+.incomeItem::after {
+    background: rgb(49, 146, 49);
+}
+
+.expenseItem::after {
+    background: rgb(146, 49, 49);
+}
+
+.toClose {
+    transform: translateX(-10%);
+}

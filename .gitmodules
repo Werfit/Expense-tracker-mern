@@ -1,0 +1,3 @@
+[submodule "expense-tracker"]
+	path = expense-tracker
+	url = https://github.com/Werfit/expense-tracker.git

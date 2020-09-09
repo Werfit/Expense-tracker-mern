@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.App {
+    width: 30%;
+    margin: 0px auto;
+    font-family: 'Lato';
+
+    padding: 2em 0px;
+}
+
+.sectionBlock h2 {
+    display: block;
+    border-bottom: 1px solid rgb(225, 225, 225);
+    padding: .5em 0px;
+}
+
+.authPage {
+    background: #fff;
+    padding: 2em 3em;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    box-shadow: 0px 10px 10px rgba(200, 200, 200, .25)
+}
+
+.websiteTitle {
+    margin: 0px;
+    border-bottom: 1px solid rgb(225, 225, 225);
+    padding-bottom: .7em;
+    text-align: center;
+    letter-spacing: .2em;
+}
+
+.pageTitle {
+    text-align: center;
+    letter-spacing: .2em;
+}

@@ -1,0 +1,39 @@
+.expensesBlock {
+    display: flex;
+    background: #fff;
+    box-shadow: 0px 3px 5px rgba(100, 100, 100, .25);
+    align-items: center;
+}
+
+.amountOfMoney {
+    flex: 1;
+    padding: 2em;
+    text-align: center;  
+    background: #fff; 
+}
+
+.dividerBlock {
+    width: 1px;
+    background: rgb(225, 225, 225);
+    height: 75px;
+    border-radius: 5px;
+}
+
+.expensesBlock span {
+    text-transform: uppercase;
+    font-weight: 18px;
+}
+
+.expensesBlock  p {
+    font-weight: 600;
+    font-size: 20px;
+    margin: .5em 0px 0px 0px;
+}
+
+.earned {
+    color: rgb(89, 230, 130)
+}
+
+.spent {
+    color: rgb(230, 89, 89)
+}

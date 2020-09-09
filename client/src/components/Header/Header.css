@@ -1,0 +1,12 @@
+.expensesInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #333;
+}
+
+p {
+    color: #777;
+    font-size: 16px!important;
+}
