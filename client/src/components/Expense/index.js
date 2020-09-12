@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 import './Expense.css'
 import X from './x.svg'
 
@@ -7,13 +8,15 @@ import { TransactionContext } from '../../context/TransactionContext'
 
 export const Expense = ({ name, amount, _id }) => {
     const [closeButtonState, setCloseButtonState] = useState(false)
+
+    const { user } = useAuth0()
     const { deleteTransaction } = useContext(TransactionContext)
 
     return (
         <div className={`expenseBlock ${closeButtonState ? 'toClose' : ''}`} >
             <div className="removeItem" onClick={ () => {
                 setCloseButtonState(false)
-                deleteTransaction(_id)
+                deleteTransaction(user.sub, _id)
             }}>
                 <img src={X} alt="X" />
             </div>

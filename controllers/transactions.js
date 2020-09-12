@@ -1,16 +1,16 @@
-const Transction = require('../models/Transaction')
-const Transaction = require('../models/Transaction')
+const Users = require('../models/User')
+const mongoose = require('mongoose')
 
 // @desc    Get all transactions
 // @route   GET /api/v1/transactions/
 // @access  Public
 exports.getTransactions = async (req, res) => {
     try {
-        const transactions = await Transction.find()
+        const user = await Users.findOne({ userId: req.body.userId })
 
         return res.status(200).json({
             success: true,
-            data: transactions
+            data: user
         })
     } catch (err) {
         return res.status(500).json({
@@ -25,10 +25,25 @@ exports.getTransactions = async (req, res) => {
 // @access  Public
 exports.addTransaction = async (req, res) => {
     try {
-        const transaction = await Transction.create({
+        const transaction = {
+            _id: mongoose.Types.ObjectId(),
             name: req.body.name,
-            amount: req.body.amount
-        })
+            amount: req.body.amount,
+            createdAt: req.body.createdAt
+        }
+
+        let user = await Users.findOne({ userId: req.body.userId })
+
+        if (user) {
+            user.transactions = JSON.stringify([transaction, ...JSON.parse(user.transactions)])
+    
+            await user.save()
+        } else {
+            user = await Users.create({
+                userId: req.body.userId,
+                transactions: JSON.stringify([transaction])
+            })
+        }
 
         return res.status(200).json({
             success: true,
@@ -54,15 +69,17 @@ exports.addTransaction = async (req, res) => {
 // @access  Public
 exports.deleteTransaction = async (req, res) => {
     try {
-        const transaction = await Transaction.findOne({ _id: req.params.id })
+        const user = await Users.findOne({ userId: req.params.userId })
 
-        if (!transaction)
+        if (!user)
             return res.status(404).json({
                 success: false,
                 error: 'Not Found!'
             })
 
-        await transaction.remove()
+        user.transactions = JSON.stringify(JSON.parse(user.transactions).filter((el) => el._id !== req.params.id))
+
+        await user.save()
 
         return res.status(200).json({
             success: true,

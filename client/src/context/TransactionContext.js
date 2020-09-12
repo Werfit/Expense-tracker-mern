@@ -13,15 +13,23 @@ export const TransactionContext = createContext()
 export const TransactionProvider = ({ children }) => {
     const [state, dispatch] = useReducer(TransactionReducer, initialState)
 
-    // Actions
-    async function getTransactions () {
-        try {
-            const res = await axios.get('/api/v1/transactions/')
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
 
-            dispatch({
-                type: 'GET',
-                payload: res.data.data.reverse()
-            })
+    // Actions
+    async function getTransactions (userId) {
+        try {
+            const res = await axios.post('/api/v1/transactions/', { userId }, config)
+
+            if (res.data.data)
+                dispatch({
+                    type: 'GET',
+                    payload: JSON.parse(res.data.data.transactions)
+                })
+
         } catch (err) {
             dispatch({
                 type: 'ERROR',
@@ -30,13 +38,13 @@ export const TransactionProvider = ({ children }) => {
         }
     }
 
-    async function deleteTransaction (id) {
+    async function deleteTransaction (userId, _id) {
         try {
-            await axios.delete(`/api/v1/transactions/${id}`)
+            await axios.delete(`/api/v1/transactions/${userId}/${_id}`)
 
             dispatch({
                 type: 'DELETE',
-                payload: id
+                payload: _id
             })
         } catch (err) {
             dispatch({
@@ -47,14 +55,8 @@ export const TransactionProvider = ({ children }) => {
     }
 
     async function addTransaction (transaction) {
-        const config = {
-            headers: {
-                'Content-type': 'application/json'
-            }
-        }
-
         try {
-            const res = await axios.post('/api/v1/transactions/', transaction, config)
+            const res = await axios.post('/api/v1/transactions/new-transaction', transaction, config)
 
             dispatch({
                 type: 'ADD',

@@ -3,17 +3,21 @@ import './Transaction.css'
 
 // Context Import
 import { TransactionContext } from '../../context/TransactionContext'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export const Transaction = () => {
-    const { transactions, addTransaction } = useContext(TransactionContext)
+    const { addTransaction } = useContext(TransactionContext)
+    const { user } = useAuth0()
+
     const [text, setText] = useState('')
     const [money, setMoney] = useState('')
 
     const newTransaction = () => {
         addTransaction({
-            id: transactions.length,
             name: text,
-            amount: +money
+            amount: +money,
+            createdAt: [new Date().getMonth(), new Date().getFullYear()],
+            userId: user.sub
         })
 
         setText('')
@@ -32,7 +36,7 @@ export const Transaction = () => {
             <label htmlFor="transactionMoney">
                 Amount
             </label>
-            <input type="number" name="transcationMoney" id="transactionMoney" placeholder="Amount..." value={ money } onChange={ e => setMoney(e.target.value) }/>
+            <input type="number" name="transcationMoney" id="transactionMoney" placeholder="Amount..." value={ money } onChange={ e => setMoney(e.target.value) } />
 
             <button onClick={ e => newTransaction() }>Add Transaction</button>
         </div>

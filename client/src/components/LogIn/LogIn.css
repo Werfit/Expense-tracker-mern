@@ -1,0 +1,22 @@
+.logInButton {
+    padding: 1em 2em;
+
+    font-size: 18px;
+    background: rgb(105, 230, 101);
+    color: #fff;
+    border: 0px;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 5px rgba(26, 122, 21, 0.25);
+    cursor: pointer;
+
+    font-weight: 700;
+    transition: .3s;
+}
+
+.logInButton:hover {
+    box-shadow: 0px 0px 0px transparent;
+}

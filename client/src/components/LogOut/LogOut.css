@@ -1,0 +1,15 @@
+.logOutButton {
+    font-weight: 700;
+    color: rgb(107, 134, 255);
+
+    display: inline-block;
+
+    cursor: pointer;
+    transition: .3s;
+    font-size: 12px;
+    background: transparent;
+    margin: .5em 0px;
+    text-align: center;
+    width: 100%;
+    border: 0px;
+}

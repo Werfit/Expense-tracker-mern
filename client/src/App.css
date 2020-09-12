@@ -39,6 +39,10 @@
     letter-spacing: .2em;
 }
 
+button {
+    outline: none;
+}
+
 @media (min-width: 700px) and (max-width: 1000px) {
     .App {
         width: 40%;

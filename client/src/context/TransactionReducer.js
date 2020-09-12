@@ -1,6 +1,7 @@
 export default (state, action) => {
     switch (action.type) {
         case 'GET':
+            console.log(action.payload)
             return {
                 ...state,
                 transactions: action.payload
@@ -11,6 +12,13 @@ export default (state, action) => {
                 transactions: state.transactions.filter(transaction => transaction._id !== action.payload)
             }
         case 'ADD':
+            console.log ({
+                ...state,
+                transactions: [
+                    action.payload,
+                    ...state.transactions
+                ]
+            })
             return {
                 ...state,
                 transactions: [

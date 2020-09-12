@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from 'react'
-import { Expense } from '../Expense'
+import { useAuth0 } from '@auth0/auth0-react'
 import './History.css'
+
+// Components
+import { Expense } from '../Expense'
 
 // Context Import
 import { TransactionContext } from '../../context/TransactionContext'
@@ -10,10 +13,12 @@ const monthsList = ['January', 'February', 'March', 'April', 'May', 'June', 'Jul
 
 export const History = () => {
     const { transactions, getTransactions } = useContext(TransactionContext)
+    const { user } = useAuth0()
 
     // eslint-disable-next-line
     useEffect(() => {
-        getTransactions()
+        if (user)
+            getTransactions(user.sub)
     }, []) // It slows down when `getTransactions in here`
 
     let lastDate = [-1, -1]

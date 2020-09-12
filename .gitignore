@@ -1,4 +1,5 @@
 node_modules
 .vscode
 Procfile
+.env
 .DS_Store
